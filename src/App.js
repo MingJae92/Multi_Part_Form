@@ -97,14 +97,15 @@ const FormStep4 = ({ formData }) => {
       <Typography variant="h4" component="h2">
         Step 4
       </Typography>
-      <Typography variant="body1" sx={{ mt: 2 }}>
-        I have a {formData.make} and the colour is {formData.colour}
-      </Typography>
-     
-      
-      {formData.colour === 'RED' && (
+
+
+      {formData.colour === 'RED' ? (
         <Typography variant="body1" sx={{ mt: 2 }}>
-         THE CAR IS {formData.colour} NICE!!
+          THE CAR IS {formData.colour} NICE!!
+        </Typography>
+      ) : (
+        <Typography variant="body1" sx={{ mt: 2 }}>
+          I have a {formData.make} and the colour is {formData.colour}
         </Typography>
       )}
     </Container>
