@@ -23,7 +23,12 @@ const FormStep4 = ({ formData, prevStep }) => {
         </Typography>
       )}
 
-      <Button variant="contained" color="primary" onClick={handlePrevStep}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={handlePrevStep}
+        sx={{ marginTop: '2rem' }} // Add margin to create equal spacing
+      >
         Previous
       </Button>
     </Container>
