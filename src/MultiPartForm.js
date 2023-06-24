@@ -18,61 +18,63 @@ import {
 const MultiPartForm = () => {
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
-        make: "",
-        model: "",
-        colour: ""
+      make: '',
+      model: '',
+      colour: '',
     });
-
+    const [formErrors, setFormErrors] = useState({});
+  
     const nextStep = () => {
-        setStep(step + 1);
+      setStep(step + 1);
     };
-
+  
     const renderStep = () => {
-        switch (step) {
-            case 1:
-                return (
-                    <FormStep1
-                        formData={formData}
-                        setFormData={setFormData}
-                        nextStep={nextStep}
-                    />
-                );
-            case 2:
-                return (
-                    <FormStep2
-                        formData={formData}
-                        setFormData={setFormData}
-                        nextStep={nextStep}
-                    />
-                );
-            case 3:
-                return (
-                    <FormStep3
-                        formData={formData}
-                        setFormData={setFormData}
-                        nextStep={nextStep}
-                    />
-                );
-            case 4:
-                return <FormStep4 formData={formData} />;
-            default:
-                return null;
-        }
+      switch (step) {
+        case 1:
+          return (
+            <FormStep1
+              formData={formData}
+              setFormData={setFormData}
+              nextStep={nextStep}
+              formErrors={formErrors}
+              setFormErrors={setFormErrors}
+            />
+          );
+        case 2:
+          return (
+            <FormStep2
+              formData={formData}
+              setFormData={setFormData}
+              nextStep={nextStep}
+              formErrors={formErrors}
+              setFormErrors={setFormErrors}
+            />
+          );
+        case 3:
+          return (
+            <FormStep3
+              formData={formData}
+              setFormData={setFormData}
+              nextStep={nextStep}
+              formErrors={formErrors}
+              setFormErrors={setFormErrors}
+            />
+          );
+        case 4:
+          return <FormStep4 formData={formData} />;
+        default:
+          return null;
+      }
     };
-
+  
     return (
-        <Container maxWidth="sm">
-            <Typography
-                variant="h3"
-                component="h1"
-                align="center"
-                sx={{ mt: 4, mb: 2 }}
-            >
-                Multi-Part Form
-            </Typography>
-            {renderStep()}
-        </Container>
+      <Container maxWidth="sm">
+        <Typography variant="h3" component="h1" align="center" sx={{ mt: 4, mb: 2 }}>
+          Multi-Part Form
+        </Typography>
+        {renderStep()}
+      </Container>
     );
-};
+  };
 
 export default MultiPartForm

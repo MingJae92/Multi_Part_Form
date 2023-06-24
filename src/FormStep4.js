@@ -4,10 +4,10 @@ import { Button, Container, FormControl, InputLabel, MenuItem, Select, TextField
 const FormStep4 = ({ formData }) => {
     return (
       <Container>
+        {/* Step 4 */}
         <Typography variant="h4" component="h2">
           Step 4
         </Typography>
-  
   
         {formData.colour === 'RED' ? (
           <Typography variant="body1" sx={{ mt: 2 }}>
@@ -21,5 +21,4 @@ const FormStep4 = ({ formData }) => {
       </Container>
     );
   };
-
 export default FormStep4

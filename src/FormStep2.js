@@ -1,17 +1,29 @@
 import React from 'react'
-import { Button, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from '@mui/material';
+import { Button, Container, FormControl, InputLabel, MenuItem, Select, TextField, Typography, FormHelperText } from '@mui/material';
 
-const FormStep2 = ({ formData, setFormData, nextStep }) => {
+const FormStep2 = ({ formData, setFormData, nextStep, formErrors, setFormErrors }) => {
     const handleChange = (event) => {
       setFormData({ ...formData, model: event.target.value });
     };
   
+    const handleNext = () => {
+      // Perform form validation
+      if (!formData.model) {
+        // Set the validation error for 'model' field
+        setFormErrors({ ...formErrors, model: 'Model is required' });
+      } else {
+        // Proceed to the next step
+        nextStep();
+      }
+    };
+  
     return (
       <Container>
+        {/* Step 2 */}
         <Typography variant="h4" component="h2">
           Step 2
         </Typography>
-        <FormControl fullWidth sx={{ mt: 2 }}>
+        <FormControl fullWidth sx={{ mt: 2 }} error={Boolean(formErrors.model)}>
           <InputLabel id="model-label">Model</InputLabel>
           <Select
             labelId="model-label"
@@ -23,8 +35,9 @@ const FormStep2 = ({ formData, setFormData, nextStep }) => {
             <MenuItem value="x5">X5</MenuItem>
             <MenuItem value="c-class">C-Class</MenuItem>
           </Select>
+          {formErrors.model && <FormHelperText>{formErrors.model}</FormHelperText>}
         </FormControl>
-        <Button variant="contained" sx={{ mt: 2 }} onClick={nextStep}>
+        <Button variant="contained" sx={{ mt: 2 }} onClick={handleNext}>
           Next
         </Button>
       </Container>
