@@ -27,6 +27,10 @@ const MultiPartForm = () => {
     const nextStep = () => {
       setStep(step + 1);
     };
+
+    const prevStep = () => {
+        setStep(step - 1);
+      };
   
     const renderStep = () => {
       switch (step) {
@@ -46,6 +50,7 @@ const MultiPartForm = () => {
               formData={formData}
               setFormData={setFormData}
               nextStep={nextStep}
+              prevStep={prevStep} // Pass prevStep function to FormStep3 component
               formErrors={formErrors}
               setFormErrors={setFormErrors}
             />
@@ -56,12 +61,16 @@ const MultiPartForm = () => {
               formData={formData}
               setFormData={setFormData}
               nextStep={nextStep}
+              prevStep={prevStep} // Pass prevStep function to FormStep3 component
               formErrors={formErrors}
               setFormErrors={setFormErrors}
             />
           );
         case 4:
-          return <FormStep4 formData={formData} />;
+          return <FormStep4 
+                formData={formData}
+                prevStep={prevStep} // Pass prevStep function to FormStep3 component
+                 />;
         default:
           return null;
       }
